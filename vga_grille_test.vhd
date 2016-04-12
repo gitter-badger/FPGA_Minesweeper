@@ -26,7 +26,7 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity vga_grille is
+entity vga_grille_test is
     Port ( clk : in  STD_LOGIC;
            rst : in  STD_LOGIC;
 --			  select_case : STD_LOGIC_VECTOR (6 downto 0);
@@ -34,9 +34,9 @@ entity vga_grille is
            data_in : out  STD_LOGIC_VECTOR (2 downto 0);
            data_write : out  STD_LOGIC);
 			  
-end vga_grille;
+end vga_grille_test;
 
-architecture Behavioral of vga_grille is
+architecture Behavioral of vga_grille_test is
 
 signal sig_ADDR : integer range 0 to 15999 := 0;
 
@@ -63,7 +63,7 @@ process(clk, rst)
 			
 			if ( (sig_ADDR >= 1470 AND sig_ADDR <= 1570) OR (sig_ADDR >= 3070 AND sig_ADDR <= 3170) OR (sig_ADDR >= 4670 AND sig_ADDR <= 4770) OR (sig_ADDR >= 6270 AND sig_ADDR <= 6370)OR(sig_ADDR >= 7870 AND sig_ADDR <=7970)OR (sig_ADDR >= 9470 AND sig_ADDR <= 9570) OR (sig_ADDR >= 11070 AND sig_ADDR <= 11170) OR (sig_ADDR >= 12670 AND sig_ADDR <= 12770) OR  (sig_ADDR >= 14270 AND sig_ADDR <= 14370)  ) then
 				ADDR <= std_logic_vector(to_unsigned(sig_ADDR,14));-- trace les lignes
-				data_in <= "001"; -- bleu
+				data_in <= "110"; -- bleu
 				data_write <= '1';
 				
 				
